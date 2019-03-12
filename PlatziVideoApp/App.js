@@ -20,6 +20,7 @@ import Home from './src/screens/containers/home';
 import Header from './src/sections/components/header';
 import SuggestionList from './src/videos/containers/suggestion-list';
 import CategoryList from './src/videos/containers/category-list';
+import Player from './src/player/containers/player';
 
 import API from './utils/api';
 
@@ -47,6 +48,7 @@ export default class App extends Component<Props> {
             <Header/>
             <Text>Buscador</Text>
             <Text>Categorias</Text>
+            <Player/>
             <CategoryList
                 list = {this.state.categoryList}
             />
