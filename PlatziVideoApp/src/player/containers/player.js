@@ -2,14 +2,18 @@ import React, { Component } from 'react';
 import {
     StyleSheet,
     ActivityIndicator,
+    Text,
 } from 'react-native';
 import Video from 'react-native-video';
 
-import Layout from '../components/layout';
+import VideoLayout from '../components/video-layout';
+import ControlLayout from '../components/control-layout';
+import PlayPause from '../components/play-pause';
 
 class Player extends Component {
     state = {
         loading: true,
+        paused: false,
     }
     onBuffer = ({ isBuffering }) => {
         this.setState({
@@ -21,10 +25,15 @@ class Player extends Component {
             loading: false
         })
     }
+    playPause = () => {
+        this.setState({
+            paused: !this.state.paused
+        })
+    }
 
     render() {
         return(
-            <Layout
+            <VideoLayout
                 loading = {this.state.loading}
                 video = {
                     <Video
@@ -35,6 +44,7 @@ class Player extends Component {
                         resizeMode = "contain"
                         onBuffer = {this.onBuffer}
                         onLoad = {this.onLoad}
+                        paused = {this.state.paused}
                     />
                 }
                 loader = {
@@ -42,8 +52,18 @@ class Player extends Component {
                         color = 'red'
                     />
                 }
-            >
-            </Layout>
+                controls = {
+                    <ControlLayout>
+                        <PlayPause
+                            onPress = {this.playPause}
+                            paused = {this.state.paused}
+                        />
+                        <Text>Progress bar | </Text>
+                        <Text>Time Left | </Text>
+                        <Text>Fullscreen | </Text>
+                    </ControlLayout>
+                }
+            />
         )
     }
 }

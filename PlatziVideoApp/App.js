@@ -46,9 +46,9 @@ export default class App extends Component<Props> {
     return (
         <Home>
             <Header/>
+            <Player/>
             <Text>Buscador</Text>
             <Text>Categorias</Text>
-            <Player/>
             <CategoryList
                 list = {this.state.categoryList}
             />
