@@ -36,4 +36,4 @@ class SuggestionList extends Component {
     }
 }
 
-export default SuggestionList
+export default SuggestionList;

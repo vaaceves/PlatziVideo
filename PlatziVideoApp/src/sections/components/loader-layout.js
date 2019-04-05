@@ -1,13 +1,13 @@
 import React from 'react';
 import {
     View,
-    StyleSheet,
+    StyleSheet
 } from 'react-native';
 
-function ControlLayout(props) {
-    return(
+function LoaderLayout (props) {
+    return (
         <View
-            style = {styles.container}
+            style = {styles.overlay}
         >
             {props.children}
         </View>
@@ -15,17 +15,15 @@ function ControlLayout(props) {
 }
 
 const styles = StyleSheet.create({
-    container: {
-        backgroundColor: 'rgba(0, 0, 0, 0.6)',
+    overlay: {
         position: 'absolute',
         left: 0,
         right: 0,
         bottom: 0,
-        height: 35,
-        flexDirection: 'row',
-        paddingHorizontal: 10,
+        top: 0,
+        justifyContent: 'center',
         alignItems: 'center',
     },
 })
 
-export default ControlLayout;
+export default LoaderLayout;

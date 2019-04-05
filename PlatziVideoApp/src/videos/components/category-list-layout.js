@@ -33,4 +33,4 @@ const styles =  StyleSheet.create({
     }
 })
 
-export default CategoryListLayout
+export default CategoryListLayout;

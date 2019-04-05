@@ -30,4 +30,4 @@ const styles = StyleSheet.create({
     },
 })
 
-export default SuggestionListLayout
+export default SuggestionListLayout;
