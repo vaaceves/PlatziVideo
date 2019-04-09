@@ -5,16 +5,17 @@ import {
 } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
-function FullScreen (props) {
+
+function Fullscreen (props) {
     return (
         <TouchableOpacity
-            onPress = {props.onPress}
             style = {styles.container}
+            onPress = {props.onPress}
             hitSlop = {{
                 left: 5,
+                right: 5,
                 top: 5,
                 bottom: 5,
-                right: 5,
             }}
         >
             <Icon
@@ -36,4 +37,4 @@ const styles = StyleSheet.create({
     },
 })
 
-export default FullScreen;
+export default Fullscreen

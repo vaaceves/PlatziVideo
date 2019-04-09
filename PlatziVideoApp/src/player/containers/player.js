@@ -1,7 +1,14 @@
-import React, { Component } from 'react';
-import { StyleSheet, ActivityIndicator, Text, ProgressBarAndroid } from 'react-native';
+import React, {
+    Component,
+} from 'react';
+import {
+    StyleSheet,
+    ActivityIndicator,
+    Text,
+    ProgressBarAndroid,
+} from'react-native';
 import Video from 'react-native-video';
-import Layout from '../components/player-layout';
+import Layout from '../components/video-layout';
 import ControlLayout from '../components/control-layout';
 import PlayPause from '../components/play-pause';
 import ProgressBar from '../components/progress-bar';
@@ -10,12 +17,11 @@ import FullScreen from '../components/fullscreen';
 
 class Player extends Component {
     state = {
-        loading: true,        // Indicador de carga
-        paused: false,        // Indicador de pausa
-        progress: 0,          // Progreso del video entre 0 y 1
-        currentTime: '0:00',  // Tiempo actual en segundos
-        duration: 0,          // Duración del vídeo en segundos
-        changeActive: false,  // Activo mientras se cambia la posición del vídeo
+        loading: true,  // indicador de carga
+        paused: false,  // indicador de pausa
+        progress: 0,  // progreso del video entre 0 y 1
+        currentTime: '0:00',  // tiempo actual en segundos
+        changeActive: false,  // activo mientras se cambia la posicion del video
         fullscreen: false,
     }
     onLoad = () => {
@@ -36,7 +42,7 @@ class Player extends Component {
         let currentTime = (mins + seconds * 10).toFixed(2);
         this.setState({
             currentTime: currentTime,
-            progress: (payload.currentTime / payload.seekableDuration ),
+            progress: (payload.currentTime / payload.seekableDuration),
             duration: payload.seekableDuration,
         })
     }
@@ -70,47 +76,52 @@ class Player extends Component {
                 }
             });
     }
+    //
     render() {
         return (
             <Layout
-                loading={this.state.loading}
-                video={
+                loading = {this.state.loading}
+                video = {
                     <Video
-                        ref={(ref) => {
+                        style = {styles.video}
+                        ref = {(ref) => {
                             this.player = ref
                         }}
-                        source={{ uri: 'https://download.blender.org/peach/bigbuckbunny_movies/BigBuckBunny_320x180.mp4' }}
-                        style={styles.video}
-                        resizeMode='contain'
-                        onLoad={this.onLoad}
-                        paused={
+                        source = {{
+                            uri: 'https://download.blender.org/peach/bigbuckbunny_movies/BigBuckBunny_320x180.mp4',
+                        }}
+                        resizeMode = 'contain'
+                        onLoad = {this.onLoad}
+                        paused = {
                             this.state.changeActive ?
                                 true :
                                 this.state.paused
                         }
-                        onProgress={this.setTime}
+                        onProgress = {this.setTime}
                     />
                 }
-                loader={
-                    <ActivityIndicator color="white"/>
+                loader = {
+                    <ActivityIndicator
+                        color = 'white'
+                    />
                 }
-                controls={
+                controls = {
                     <ControlLayout>
                         <PlayPause
-                            onPress={this.PlayPause}
-                            paused={this.state.paused}
+                            onPress = {this.PlayPause}
+                            paused = {this.state.paused}
                         />
                         <ProgressBar
-                            progress={this.state.progress}
-                            onChangeStarted={this.changeSliderStarted}
-                            onChangeFinished={this.changeSliderFinished}
+                            progress = {this.state.progress}
+                            onChangeStarted = {this.changeSliderStarted}
+                            onChangeFinished = {this.changeSliderFinished}
                         />
                         <TimeLeft
-                            currentTime={this.state.currentTime}
-                            duration={this.state.duration}
+                            currentTime = {this.state.currentTime}
+                            duration = {this.state.duration}
                         />
                         <FullScreen
-                            onPress={this.FullScreen}
+                            onPress = {this.FullScreen}
                         />
                     </ControlLayout>
                 }
@@ -124,12 +135,15 @@ const styles = StyleSheet.create({
         position: 'absolute',
         left: 0,
         right: 0,
-        bottom: 0,
         top: 0,
-    }
+        bottom: 0,
+    },
 })
 
-export default Player;
+export default Player
+
+
+
 
 // import React, { Component } from 'react';
 // import {
@@ -170,9 +184,9 @@ export default Player;
 //                 loading = {this.state.loading}
 //                 video = {
 //                     <Video
-//                         //source = {{
-//                             //uri: 'https://download.blender.org/peach/bigbuckbunny_movies/BigBuckBunny_320x180.mp4',
-//                         //}}
+//                         source = {{
+//                             uri: 'https://download.blender.org/peach/bigbuckbunny_movies/BigBuckBunny_320x180.mp4',
+//                         }}
 //                         style = {styles.video}
 //                         resizeMode = "contain"
 //                         onBuffer = {this.onBuffer}

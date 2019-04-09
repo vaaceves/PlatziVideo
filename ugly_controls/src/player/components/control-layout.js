@@ -4,10 +4,11 @@ import {
     StyleSheet
 } from 'react-native';
 
-function LoaderLayout (props) {
+
+function ControlsLayout (props) {
     return (
         <View
-            style = {styles.overlay}
+            style = {styles.container}
         >
             {props.children}
         </View>
@@ -15,15 +16,18 @@ function LoaderLayout (props) {
 }
 
 const styles = StyleSheet.create({
-    overlay: {
+    container: {
+        backgroundColor: 'rgba(255, 255, 255, 0.3)',
         position: 'absolute',
         left: 0,
         right: 0,
-        bottom: 0,
         top: 0,
-        justifyContent: 'center',
+        bottom: 0,
+        flexDirection: 'row',
+        paddingHorizontal: 10,
         alignItems: 'center',
+        justifyContent: 'space-between',
     },
 })
 
-export default LoaderLayout;
+export default ControlsLayout

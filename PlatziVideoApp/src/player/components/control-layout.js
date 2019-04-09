@@ -16,7 +16,7 @@ function ControlLayout(props) {
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: 'rgba(0, 0, 0, 0.6)',
+        backgroundColor: 'rgba(0, 0, 0, .5)',
         position: 'absolute',
         left: 0,
         right: 0,
@@ -24,8 +24,8 @@ const styles = StyleSheet.create({
         height: 35,
         flexDirection: 'row',
         paddingHorizontal: 10,
-        alignItems: 'center',
-    },
+        alignItems: 'center'
+    }
 })
 
-export default ControlLayout;
+export default ControlLayout

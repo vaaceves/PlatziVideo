@@ -23,8 +23,8 @@ function timeReadable (time) {
     let mins = Math.floor(timeInMins);
     let seconds = timeInMins % 1;
     seconds = (seconds * 60) / 1000;
-    let timeReadable = (mins + seconds * 10).toFixed(2).toString().replace('.', ':');
-    return timeReadable
+    let timeReadable = (mins + seconds * 10).toFixed(2).toString().replace('.',':');
+    return timeReadable;
 }
 
 const styles = StyleSheet.create({
@@ -34,4 +34,4 @@ const styles = StyleSheet.create({
     },
 })
 
-export default TimeLeft;
+export default TimeLeft
