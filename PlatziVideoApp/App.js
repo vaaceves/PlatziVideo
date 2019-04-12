@@ -12,6 +12,7 @@ import Header from './src/sections/components/header';
 import SuggestionList from './src/videos/containers/suggestion-list';
 import CategoryList from './src/videos/containers/category-list';
 import Player from './src/player/containers/player';
+import Loading from './src/videos/components/loading';
 
 import API from './utils/api';
 import { Provider } from 'react-redux';
@@ -47,7 +48,7 @@ export default class App extends Component<Props> {
             store = {store}
         >
             <PersistGate
-                loading = {<Text>Cargando ...</Text>}
+                loading = {<Loading />}
                 persistor = {persistor}
             >
                 <Home>
