@@ -15,7 +15,8 @@ import Player from './src/player/containers/player';
 
 import API from './utils/api';
 import { Provider } from 'react-redux';
-import store from './store';
+import { PersistGate } from "redux-persist/integration/react";
+import { store, persistor } from "./store";
 
 
 type Props = {};
@@ -45,12 +46,17 @@ export default class App extends Component<Props> {
         <Provider
             store = {store}
         >
-            <Home>
-                <Header />
-                <Player />
-                <CategoryList />
-                <SuggestionList />
-            </Home>
+            <PersistGate
+                loading = {<Text>Cargando ...</Text>}
+                persistor = {persistor}
+            >
+                <Home>
+                    <Header />
+                    <Player />
+                    <CategoryList />
+                    <SuggestionList />
+                </Home>
+            </PersistGate>
         </Provider>
     );
   }
