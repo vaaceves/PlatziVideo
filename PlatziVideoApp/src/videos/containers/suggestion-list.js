@@ -8,6 +8,14 @@ import Layout from '../components/suggestion-list-layout';
 import Empty from '../components/empty.js';
 import VerticalSeparator from "../../sections/components/vertical-separator";
 import Suggestion from '../components/suggestion';
+import { connect } from 'react-redux';
+
+
+function mapStateToProps(state) {
+    return {
+        list: state.suggestionList
+    }
+}
 
 class SuggestionList extends Component {
     keyExtractor = (item) => item.id.toString()
@@ -36,4 +44,4 @@ class SuggestionList extends Component {
     }
 }
 
-export default SuggestionList
+export default connect(mapStateToProps)(SuggestionList);

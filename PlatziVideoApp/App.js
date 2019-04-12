@@ -1,12 +1,3 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow
- * @lint-ignore-every XPLATJSCOPYRIGHT1
- */
-
 import React, {Component} from 'react';
 import {
     Platform,
@@ -23,39 +14,44 @@ import CategoryList from './src/videos/containers/category-list';
 import Player from './src/player/containers/player';
 
 import API from './utils/api';
+import { Provider } from 'react-redux';
+import store from './store';
+
 
 type Props = {};
 export default class App extends Component<Props> {
     state = {
-        suggestionList: [],
-        categoryList: [],
-    }
 
+    }
     async componentDidMount() {
-        const movies = await API.getSuggestion(10);
-        const categories = await API.getMovies();
-        console.log(movies);
-        console.log(categories);
-       this.setState({
-           suggestionList: movies,
-           categoryList: categories,
-       })
+        const suggestionList = await API.getSuggestion(10);
+        store.dispatch({
+            type: 'SET_SUGGESTION_LIST',
+            payload: {
+                suggestionList
+            }
+        })
+        const categoryList = await API.getMovies();
+        store.dispatch({
+            type: 'SET_CATEGORY_LIST',
+            payload: {
+                categoryList
+            }
+        })
     }
 
     render() {
     return (
-        <Home>
-            <Header/>
-            <Player/>
-            <Text>Buscador</Text>
-            <Text>Categorias</Text>
-            <CategoryList
-                list = {this.state.categoryList}
-            />
-            <SuggestionList
-                list = {this.state.suggestionList}
-            />
-        </Home>
+        <Provider
+            store = {store}
+        >
+            <Home>
+                <Header />
+                <Player />
+                <CategoryList />
+                <SuggestionList />
+            </Home>
+        </Provider>
     );
   }
 }
