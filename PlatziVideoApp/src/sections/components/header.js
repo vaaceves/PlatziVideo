@@ -11,12 +11,16 @@ import {
      return (
          <View>
              <SafeAreaView>
-                 <View style = {styles.container}>
+                 <View
+                     style = {styles.container}
+                 >
                      <Image
                          source={require('../../../assets/logo.png')}
                          style = {styles.logo}
                      />
-                     <View style = {styles.right}>
+                     <View
+                         style = {styles.right}
+                     >
                          {props.children}
                      </View>
                  </View>
