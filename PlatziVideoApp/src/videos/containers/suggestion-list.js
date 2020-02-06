@@ -40,7 +40,7 @@ class SuggestionList extends Component {
 
     render() {
         return (
-            <Layout
+            <Layout1
                 title = 'Recomendado para ti'
             >
                 <FlatList
@@ -50,7 +50,7 @@ class SuggestionList extends Component {
                     ItemSeparatorComponent = {this.itemSeparator}
                     renderItem = {this.renderItem}
                 />
-            </Layout>
+            </Layout1>
         )
     }
 }
